@@ -109,7 +109,10 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: .
-          platforms: linux/amd64,linux/arm64
+          # amd64 only: ONT ships modkit as a precompiled x86_64 binary
+          # (no aarch64 release asset), so an arm64 image would install an
+          # amd64 executable and fail to run.
+          platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
