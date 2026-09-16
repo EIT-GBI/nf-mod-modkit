@@ -14,25 +14,23 @@ process MODKIT_PILEUP {
     tuple path(fasta), path(fai)
 
     output:
-    tuple val(meta), path("${meta.id}.bedmethyl.bed.gz"), emit: bedmethyl
-    path "${meta.id}.modkit_pileup.log",                  emit: log
+    tuple val(meta), path("${meta.id}.bedmethyl.bed"), emit: bedmethyl
+    path "${meta.id}.modkit_pileup.log",               emit: log
 
     script:
     def args = task.ext.args ?: ''
     """
     modkit pileup \\
         ${args} \\
-        --reference ${fasta} \\
+        --ref "${fasta}" \\
         --threads ${task.cpus} \\
         --log-filepath ${meta.id}.modkit_pileup.log \\
-        --bgzf \\
-        ${bam} \\
-        ${meta.id}.bedmethyl.bed.gz
+        "${bam}" \\
+        ${meta.id}.bedmethyl.bed
     """
 
     stub:
     """
-    echo | gzip > ${meta.id}.bedmethyl.bed.gz
-    touch ${meta.id}.modkit_pileup.log
+    touch ${meta.id}.bedmethyl.bed ${meta.id}.modkit_pileup.log
     """
 }

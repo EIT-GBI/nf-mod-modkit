@@ -19,8 +19,8 @@ process MODKIT_MOTIF_SEARCH {
     """
     modkit motif search \\
         ${args} \\
-        -i ${bedmethyl} \\
-        -r ${fasta} \\
+        -i "${bedmethyl}" \\
+        -r "${fasta}" \\
         -o ${meta.id}.motifs.tsv \\
         --threads ${task.cpus} \\
         --log-filepath ${meta.id}.modkit_motif_search.log
