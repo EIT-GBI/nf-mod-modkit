@@ -3,7 +3,7 @@
 
 Nextflow module for modkit. Used as a git submodule by pipelines.
 
-Image: `ghcr.io/eit-gbi/nf-mod-modkit:v0.0.0`
+Image: `ghcr.io/eit-gbi/nf-mod-modkit:v1.0.0`
 
 ## Processes
 
@@ -24,7 +24,7 @@ include { MODKIT } from './modules/modkit/main.nf'
 Pipelines pin a release rather than tracking `main`:
 
 ```bash
-git -C modules/modkit checkout v0.0.0
+git -C modules/modkit checkout v1.0.0
 ```
 
 and pick up the matching image with `includeConfig 'modules/modkit/conf/module.config'`.
