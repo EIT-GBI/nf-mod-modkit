@@ -8,10 +8,14 @@ ARG MODKIT_URL="https://github.com/nanoporetech/modkit/releases/download/v${MODK
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+# procps for `ps`: Nextflow's task wrapper shells out to it to collect metrics,
+# and without it every task dies with
+#   Command 'ps' required by nextflow to collect task metrics cannot be found
+#
 # The tarball's top-level directory carries a commit hash, so strip it rather
 # than naming it.
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends ca-certificates curl \
+    && apt-get install -y --no-install-recommends ca-certificates curl procps \
     && curl -fsSL "${MODKIT_URL}" -o /tmp/modkit.tar.gz \
     && echo "${MODKIT_SHA256}  /tmp/modkit.tar.gz" | sha256sum -c - \
     && mkdir -p /opt/modkit \
