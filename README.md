@@ -22,8 +22,9 @@ minimap2 unless it is given `-y`.
 
 ## Publishing
 
-These processes publish to `${params.outdir}/methylation`. Pipelines that want a
-different layout override `publishDir` with a `withName` selector.
+These processes do **not** publish their own outputs. Publishing is the
+consuming pipeline's job, via a workflow `output {}` block. This keeps the
+module reusable across pipelines that want different result layouts.
 
 ## Tool arguments
 

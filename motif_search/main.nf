@@ -4,7 +4,6 @@
 process MODKIT_MOTIF_SEARCH {
     tag "${meta.id}"
 
-    publishDir "${params.outdir}/methylation/motifs", mode: 'link'
 
     input:
     tuple val(meta), path(bedmethyl)
