@@ -3,7 +3,7 @@
 Nextflow module for [modkit](https://github.com/nanoporetech/modkit) (modified-base
 pileup and motif discovery from modBAMs). Used as a git submodule by pipelines.
 
-Image: `ghcr.io/eit-gbi/nf-mod-modkit:v2.0.0`
+Image: `ghcr.io/eit-gbi/nf-mod-modkit:v1.0.0`
 
 Published for `linux/amd64` only — modkit ships no aarch64 build, so an arm64
 image would carry an x86_64 binary. On an arm64 host, run with
@@ -49,7 +49,7 @@ Pin to a release tag rather than a branch, so pipeline runs stay reproducible:
 
 ```bash
 git submodule add https://github.com/EIT-GBI/nf-mod-modkit.git modules/modkit
-git -C modules/modkit checkout v2.0.0
+git -C modules/modkit checkout v1.0.0
 ```
 
 Then include the module's container config from your `nextflow.config`. Nextflow
