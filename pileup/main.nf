@@ -7,7 +7,6 @@
 process MODKIT_PILEUP {
     tag "${meta.id}"
 
-    publishDir "${params.outdir}/methylation", mode: 'copy'
 
     input:
     tuple val(meta), path(bam), path(bai)
